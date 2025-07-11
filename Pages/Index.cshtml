@@ -2,10 +2,14 @@
 @model IndexModel
 
 <form method="post">
-    <input type="text" name="query" placeholder="Enter your query" />
+    <input type="text" asp-for="Query" placeholder="Enter your query" />
     <button type="submit">Submit</button>
 </form>
 
-<ul id="results">
-    <li><a href="#" target="_blank">Example result</a></li>
-</ul>
+@if (Model.Result != null)
+{
+    <div id="results">
+        <p>@Model.Result</p>
+    </div>
+}
+
