@@ -10,6 +10,26 @@
 {
     <div id="results">
         <p>@Model.Result</p>
+        @if (Model.RelatedUrls != null && Model.RelatedUrls.Any())
+        {
+            <h3>Related URLs</h3>
+            <ul>
+                @foreach (var url in Model.RelatedUrls)
+                {
+                    <li><a href="@url" target="_blank">@url</a></li>
+                }
+            </ul>
+        }
     </div>
 }
 
+@section Scripts {
+    <script>
+        (function () {
+            var mainUrl = "@Model.MainUrl";
+            if (mainUrl) {
+                window.open(mainUrl, "_blank");
+            }
+        })();
+    </script>
+}
